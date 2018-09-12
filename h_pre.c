@@ -70,6 +70,7 @@ NUM* init_num()
 void free_num(NUM *n)
 {
     free(n->mant);
+    free(n->dec);
     free(n);
 }
 

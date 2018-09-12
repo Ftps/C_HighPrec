@@ -61,7 +61,7 @@ NUM* init_num()
     new->is_zero = 1;
     new->exp = new->sig = 0;
     new->mant_size = _SIZE;
-    new->dec = (char*)malloc(sizeof(char)*(_SIZE + 10));
+    new->dec = (char*)malloc(sizeof(char)*(NUM_SIZE+1));
     strcpy(new->dec, ZERO);
 
     return new;

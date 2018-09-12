@@ -14,6 +14,7 @@
 #define ERR_DIV_ZERO        -2
 
 #define DEFAULT_SIZE    128
+#define NUM_SIZE        20
 #define ZERO            "0.000000000e0"
 
 typedef struct NUM{

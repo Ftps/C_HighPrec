@@ -7,15 +7,15 @@
 #include <string.h>
 #include <math.h>
 
-#define WAIT while(getchar() != '\n');
-#define LOG         {printf("\nIN FILE %s || IN LINE %d\n\n", __FILE__, __LINE__); fflush(stdout);}
-#define LOG_WAIT    {printf("\nIN FILE %s || IN LINE %d\n\n", __FILE__, __LINE__); fflush(stdout); WAIT}
+#define WAIT                while(getchar() != '\n');
+#define LOG                 {printf("\nIN FILE %s || IN LINE %d\n\n", __FILE__, __LINE__); fflush(stdout);}
+#define LOG_WAIT            {printf("\nIN FILE %s || IN LINE %d\n\n", __FILE__, __LINE__); fflush(stdout); WAIT}
 #define PRINT_ERROR(X, d)   {printf(X); putchar('\n'); exit(d);}
 #define ERR_DIV_ZERO        -2
 
-#define DEFAULT_SIZE    128
-#define NUM_SIZE        20
-#define ZERO            "0.000000000e0"
+#define DEFAULT_SIZE        128
+#define NUM_SIZE            20
+#define ZERO                "0.000000000e0"
 
 typedef struct NUM{
     bool *mant;

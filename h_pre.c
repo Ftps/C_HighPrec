@@ -133,30 +133,33 @@ NUM* dou_num(double p)
 {
     NUM *new = init_num();
     double n;
-
+    LOG
     if(!p) return new;
     else if(p < 0){
         new->sig = 1;
-        p = abs(p);
+        p = -p;
     }
     new->is_zero = 0;
+    printf("%lf\n", p);
     new->exp = (int)(1+log2(p));
     p = p*pow(2, -(new->exp));
-
+    LOG
+    printf("%lf\n", p);
     for(int i = 0; i < _SIZE && p; ++i){
         if((n = pow(2, -i)) < p){
+            LOG
             new->mant[i] = 1;
             p -= n;
         }
     }
-
+    LOG
     while(!(new->mant[0])){
         for(int i = 0; i < _SIZE-1; ++i){
             new->mant[i] = new->mant[i+1];
         }
         --new->exp;
     }
-
+    LOG
     num_str(new);
 
     return new;
@@ -187,7 +190,7 @@ int compare_num(NUM *n1, NUM *n2)
 NUM* add_num(NUM *n1, NUM *n2, int f)
 {
     NUM *add, *big, *small;
-    int cmp, a = 1, carry = 0, exp_dif, i;
+    int cmp, a = 1, carry, exp_dif, i;
 
     if(is_zero(n1)){add = num_cpy(n2); a = 0;}
     else if(is_zero(n2)){add = num_cpy(n1); a = 0;}
@@ -205,7 +208,7 @@ NUM* add_num(NUM *n1, NUM *n2, int f)
     if(a){
         if((exp_dif = big->exp - small->exp) >= _SIZE) add = num_cpy(big);
         else{
-            a = (big->sig == small->sig) ? 0b0: 0b1;
+            carry = a = (big->sig == small->sig) ? 0b0: 0b1;
             add = init_num();
             add->is_zero = 0;
             add->exp = big->exp;
